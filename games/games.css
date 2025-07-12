@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #00ffff;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.games-header {
+  font-size: 42px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #00ffff;
+  text-shadow: 0 0 15px #00ffffaa, 0 0 40px #00ffff33;
+  letter-spacing: 1px;
+}
+
+
+.tab-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 95%;
+  margin: auto;
+  padding: 10px 20px 40px;
+}
+
+.tab-buttons button {
+  background: #111;
+  border: none;
+  border-radius: 18px;
+  height: 180px;
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 14px #00ffff55;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-buttons button:hover {
+  background: #1d1d1d;
+  box-shadow: 0 0 20px #00ffff99;
+}
+
+.tab-buttons .icon {
+  font-size: 50px;
+  margin-bottom: 12px;
+}
+
+.tab-buttons .label {
+  font-size: 22px;
+}

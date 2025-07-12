@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+  a { text-decoration: none; color: inherit; }
+</style>
+
+    <script>
+  const knightName = localStorage.getItem("knightName");
+  const knightCode = localStorage.getItem("knightCode");
+    if (!knightCode) {
+    // Not logged in, redirect to login
+    window.location.href = "../login.html";
+  }
+  const allowedKnights = {
+    apexion: "175025",
+    velox: "2275025",
+    luminari: "1275025",
+    kairos: "1175025",
+    spectra: "1975025"
+  };
+
+  if (
+    !knightName ||
+    !knightCode ||
+    !allowedKnights[knightName.toLowerCase()] ||
+    allowedKnights[knightName.toLowerCase()] !== knightCode
+  ) {
+    localStorage.clear(); // wipe invalid data
+    window.location.href = "index.html";
+  }
+</script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arkonox Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/dashboard.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+     <div class="topbar">
+    <!-- ✅ Add this line below -->
+    <h2 id="knightNameDisplay"></h2>
+  </div>
+
+  <!-- rest of your dashboard content here -->
+
+  <script src="js/dashboard.js"></script>
+  <div class="header">
+  <h1 id="knightWelcome">🏰 Welcome, <span id="knightNameSpan"></span></h1>
+  <span id="time"></span>
+  <i id="profileIcon" class="fas fa-user-circle"></i>
+</div>
+
+
+  <div id="welcomeText">Arkonox</div>
+
+  <div class="card-grid">
+    <div class="card">📝 Reminders</div>
+  <a href="games/games.html"> 
+    <div class="card">🎮 Games</div>
+  </a>   
+    
+
+  </div>
+
+  <div class="bottom-nav">
+    <div class="nav-item">🏠<br><small>Home</small></div>
+    <div class="nav-item">🎯<br><small>Tasks</small></div>
+    <div class="nav-item">⚔️<br><small>Sword</small></div>
+    <div class="nav-item">💬<br><small>Chat</small></div>
+    
+  </div>
+
+</body>
+</html>

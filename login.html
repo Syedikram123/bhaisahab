@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Knight Login</title>
+  <style>
+    body {
+      background: #0c0c0c;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+      padding-top: 80px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 250px;
+    }
+    button {
+      background: #1e90ff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1560c4;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛡️ Knight Login</h1>
+
+  <input type="text" id="knightName" placeholder="Enter Knight Name" /><br>
+  <input type="password" id="knightCode" placeholder="Enter Knight Code" /><br>
+  <button onclick="login()">Enter Arkonox</button>
+
+  <script>
+    function login() {
+      const name = document.getElementById("knightName").value;
+      const code = document.getElementById("knightCode").value;
+
+      // Simple condition (replace with real auth later)
+      if (code === "arkonox123") {
+        // Save to localStorage
+        localStorage.setItem("knightName", name);
+        localStorage.setItem("knightCode", code);
+        // Redirect to dashboard
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Invalid Knight Code!");
+      }
+    }
+  </script>
+
+</body>
+</html>

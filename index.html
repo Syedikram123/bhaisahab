@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Arkonox</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <video autoplay muted loop id="bg-video">
+    <source src="assets/video-bg.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay">
+    <h1 id="pageTitle">WELCOME TO PLANET ARKONOX</h1>
+    <input type="text" id="knightName" placeholder="Enter Knight Name">
+    <input type="text" id="knightCode" placeholder="Enter Knight Code">
+    <!-- ✅ Error message placed ABOVE the button and hidden by default -->
+    <p id="error" style="display: none;">❌ Wrong Input</p>
+    <button id="enterBtn">ENTER WORLD</button>
+  </div>
+
+  <audio id="clickSound" src="assets/click.mp3" preload="auto"></audio>
+  <script src="js/script.js"></script>
+</body>
+</html>

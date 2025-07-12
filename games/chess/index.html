@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arkonox Chess</title>
+  <script>
+    const knightCode = localStorage.getItem('knightCode');
+    if (!knightCode) {
+      window.location.href = "../login.html";
+    }
+  </script>
+  <style>
+    body {
+      background: #0b0b0b;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #00ffff;
+  text-shadow: 0 0 12px #00ffffaa, 0 0 30px #00ffff55;
+}
+
+.btn {
+  padding: 18px 36px;
+  font-size: 22px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 10px;
+  box-shadow: 0 0 12px #1e90ff88;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #1560c4;
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body>
+  <h2>♟️ Play Chess vs Computer on Chess.com</h2>
+  <button class="btn" onclick="window.open('https://www.chess.com/play/computer', '_blank')">Launch Chess Game</button>
+</body>
+</html>

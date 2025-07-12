@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Games | Arkonox</title>
+  
+  <!-- Knight Login Check -->
+  <script>
+    const knightCode = localStorage.getItem('knightCode');
+    if (!knightCode) {
+      window.location.href = "../login.html";
+    }
+  </script>
+
+  <!-- Games Page Styles -->
+  <link rel="stylesheet" href="games.css">
+</head>
+<audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
+<script>
+  function playClick() {
+    const audio = document.getElementById('clickSound');
+    if (audio) audio.play();
+  }
+
+  function openChess() {
+    playClick();
+    setTimeout(() => {
+      window.location.href = "chess/index.html";
+    }, 150);
+  }
+
+  function openQuiz() {
+    playClick();
+    setTimeout(() => {
+      window.location.href = "quiz/index.html";
+    }, 150);
+  }
+</script>
+<audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
+
+<body>
+  <h2 class="games-header">🎮 Games Section</h2>
+
+  <div class="tab-buttons">
+  <button onclick="openChess()">
+    <div class="icon">♟️</div>
+    <div class="label">Chess</div>
+  </button>
+  <button onclick="openQuiz()">
+    <div class="icon">🧠</div>
+    <div class="label">Quiz</div>
+  </button>
+</div>
+
+
+  <script>
+    function openChess() {
+      window.location.href = "chess/index.html";
+    }
+
+    function openQuiz() {
+      window.location.href = "quiz/index.html";
+    }
+  </script>
+</body>
+</html>
