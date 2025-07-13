@@ -95,6 +95,7 @@ function showSection(section) {
 
 // ✅ Arkonox Date
 function calculateArkonoxDate() {
+  const arkonoxDateEl = document.getElementById("arkonoxDate");
   const startDate = new Date("2025-08-01T00:00:00Z");
   const now = new Date();
   const diffDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
@@ -106,6 +107,7 @@ function calculateArkonoxDate() {
     "Obscuron", "Xandria", "Thalvarin", "Virelia", "Elyndor",
     "Drakor", "Quorath", "Sytherra", "Yllarith", "Zephyros"
   ];
+
   const dayNames = ["Raiz", "Auron", "Izan", "Zoro", "Omax"];
 
   const moonIndex = Math.floor(diffDays / 30);
@@ -114,15 +116,27 @@ function calculateArkonoxDate() {
   const dayName = dayNames[dayInMoon % 5];
   const moonName = moons[moonIndex] || "Unknown";
 
-  const arkoDate = `${moonName} ${phase} ${dayName}`;
-  const el = document.getElementById("arkonoxDate");
-  if (el) el.innerText = `Arkonox Date: ${arkoDate}`;
+  const arkoDate = `${moonName} Phase ${phase} - ${dayName}`;
+
+  if (arkonoxDateEl) arkonoxDateEl.innerText = `Arkonox Date: ${arkoDate}`;
 }
 
-// ✅ Earth Clock
 function updateClock() {
+  const earthClockEl = document.getElementById("earthClock");
   const now = new Date();
-  const timeStr = now.toLocaleTimeString("en-GB");
-  const el = document.getElementById("earthClock");
-  if (el) el.innerText = `Time: ${timeStr}`;
+  const hh = String(now.getHours()).padStart(2, "0");
+  const mm = String(now.getMinutes()).padStart(2, "0");
+  const ss = String(now.getSeconds()).padStart(2, "0");
+  const timeStr = `${hh}:${mm}:${ss}`;
+
+  if (earthClockEl) earthClockEl.innerText = `Time: ${timeStr}`;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  calculateArkonoxDate();
+  updateClock();
+  setInterval(() => {
+    calculateArkonoxDate();
+    updateClock();
+  }, 1000);
+});
