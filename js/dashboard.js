@@ -131,12 +131,10 @@ function updateClock() {
 
   if (earthClockEl) earthClockEl.innerText = `Time: ${timeStr}`;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
   calculateArkonoxDate();
   updateClock();
   setInterval(() => {
     calculateArkonoxDate();
     updateClock();
   }, 1000);
-});
+
