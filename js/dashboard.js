@@ -21,15 +21,8 @@ if (
   window.location.href = "index.html";
 }
 
-// ✅ Display Knight Name in Dashboard Header
 document.addEventListener("DOMContentLoaded", () => {
-   calculateArkonoxDate();
-  updateClock();
-  setInterval(() => {
-    calculateArkonoxDate();
-    updateClock();
-  }, 1000);
-
+  // ✅ Display Name
   const knightNameSpan = document.getElementById("knightNameSpan");
   const nameDisplay = document.getElementById("knightNameDisplay");
   const welcomeText = document.getElementById("welcomeText");
@@ -48,10 +41,34 @@ document.addEventListener("DOMContentLoaded", () => {
     welcomeText.innerText += ` | ${style}`;
   }
 
-  // Load or initialize progress
+  // ✅ Arkonox Calendar + Earth Clock
+  calculateArkonoxDate();
+  updateClock();
+  setInterval(() => {
+    calculateArkonoxDate();
+    updateClock();
+  }, 1000);
+
+  // ✅ Sword message (if previously saved)
+  const savedSword = localStorage.getItem(`sword_${knightName}`);
+  if (savedSword) {
+    const msg = document.getElementById("swordSelectedMsg");
+    if (msg) msg.innerHTML = `✅ You previously chose: <b>${savedSword}</b>`;
+  }
+
+  // ✅ Sword selection
+  document.querySelectorAll('.sword-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const sword = card.dataset.sword;
+      localStorage.setItem(`sword_${knightName}`, sword);
+      const msg = document.getElementById("swordSelectedMsg");
+      if (msg) msg.innerHTML = `🛡️ You selected: <b>${sword}</b>`;
+    });
+  });
+
+  // ✅ Progress storage init
   const progressKey = `progress_${knightName}`;
   const savedProgress = localStorage.getItem(progressKey);
-
   if (!savedProgress) {
     const newProgress = {
       currentMoon: "Moon 1 - Awakening",
@@ -62,46 +79,21 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     localStorage.setItem(progressKey, JSON.stringify(newProgress));
   }
-
-  // Load selected sword
-  const savedSword = localStorage.getItem(`sword_${knightName}`);
-  if (savedSword) {
-    const msg = document.getElementById("swordSelectedMsg");
-    if (msg) msg.innerHTML = `✅ You previously chose: <b>${savedSword}</b>`;
-  }
-
-  // Sword selection handler
-  document.querySelectorAll('.sword-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const sword = card.dataset.sword;
-      localStorage.setItem(`sword_${knightName}`, sword);
-      const msg = document.getElementById("swordSelectedMsg");
-      if (msg) msg.innerHTML = `🛡️ You selected: <b>${sword}</b>`;
-    });
-  });
 });
 
-// ✅ Helper: Capitalize name
+// ✅ Capitalize name
 function capitalize(name) {
   return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 }
 
-// ✅ Section Switching Function
+// ✅ Show section toggle
 function showSection(section) {
   document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-
-  if (section === 'home') {
-    document.getElementById("homeSection").style.display = "block";
-  } else if (section === 'sword') {
-    document.getElementById("swordSection").style.display = "block";
-  } else {
-    console.warn("Unknown section:", section);
-  }
+  if (section === 'home') document.getElementById("homeSection").style.display = "block";
+  if (section === 'sword') document.getElementById("swordSection").style.display = "block";
 }
 
-console.log("KnightName in localStorage:", localStorage.getItem("knightName"));
-
-// 🧠 Arkonox Date Calculator
+// ✅ Arkonox Date
 function calculateArkonoxDate() {
   const startDate = new Date("2025-08-01T00:00:00Z");
   const now = new Date();
@@ -114,8 +106,8 @@ function calculateArkonoxDate() {
     "Obscuron", "Xandria", "Thalvarin", "Virelia", "Elyndor",
     "Drakor", "Quorath", "Sytherra", "Yllarith", "Zephyros"
   ];
-
   const dayNames = ["Raiz", "Auron", "Izan", "Zoro", "Omax"];
+
   const moonIndex = Math.floor(diffDays / 30);
   const dayInMoon = diffDays % 30;
   const phase = Math.floor(dayInMoon / 5) + 1;
@@ -123,20 +115,14 @@ function calculateArkonoxDate() {
   const moonName = moons[moonIndex] || "Unknown";
 
   const arkoDate = `${moonName} ${phase} ${dayName}`;
-  document.getElementById("arkonoxDate").innerText = `Arkonox Date: ${arkoDate}`;
+  const el = document.getElementById("arkonoxDate");
+  if (el) el.innerText = `Arkonox Date: ${arkoDate}`;
 }
 
+// ✅ Earth Clock
 function updateClock() {
   const now = new Date();
-  const timeStr = now.toLocaleTimeString("en-GB"); // HH:MM:SS
-  document.getElementById("earthClock").innerText = `Time: ${timeStr}`;
+  const timeStr = now.toLocaleTimeString("en-GB");
+  const el = document.getElementById("earthClock");
+  if (el) el.innerText = `Time: ${timeStr}`;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  calculateArkonoxDate();
-  updateClock();
-  setInterval(() => {
-    calculateArkonoxDate();
-    updateClock();
-  }, 1000);
-});
