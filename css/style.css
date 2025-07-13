@@ -242,36 +242,40 @@ body {
   text-shadow: 0 0 10px #0ff;
 }
 
-/* === Arkonox Clock Styles === */
 
-.calendar-box {
-  margin-top: 2rem;
-  background: rgba(0, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+/* 🌌 Arkonox Time Block */
+.center-text {
   text-align: center;
-  width: 90%;
-  max-width: 500px;
-  border: 2px solid #0ff;
-  animation: glow 3s infinite alternate;
+  padding: 2rem 0 1rem;
 }
 
-.calendar-box h3 {
-  font-size: 1.4rem;
-  margin: 1rem 0;
-  line-height: 1.6;
+.center-text h3 {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
   color: #0ff;
   text-shadow: 0 0 10px #0ff;
-  white-space: pre-line;
 }
 
-@keyframes glow {
-  from {
-    box-shadow: 0 0 10px #0ff;
-  }
-  to {
-    box-shadow: 0 0 30px #0ff;
-  }
+/* Cards Section for Reminder + Games */
+.card-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.5rem 1rem;
 }
 
+.card {
+  background: #111;
+  color: #0ff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
