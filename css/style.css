@@ -241,3 +241,16 @@ body {
   margin-top: 1.2rem;
   text-shadow: 0 0 10px #0ff;
 }
+
+.calendar-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #0ff;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1.5rem auto;
+  max-width: 90%;
+  text-align: center;
+  color: #0ff;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #0ff;
+}
