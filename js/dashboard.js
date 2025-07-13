@@ -103,7 +103,7 @@ console.log("KnightName in localStorage:", localStorage.getItem("knightName"));
 
 // 🧠 Arkonox Date Calculator
 function calculateArkonoxDate() {
-  const startDate = new Date("2025-07-01T00:00:00Z");
+  const startDate = new Date("2025-08-01T00:00:00Z");
   const now = new Date();
   const diffDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
 
@@ -116,26 +116,27 @@ function calculateArkonoxDate() {
   ];
 
   const dayNames = ["Raiz", "Auron", "Izan", "Zoro", "Omax"];
-
-  const moonIndex = Math.floor(diffDays / 30); // 0–24
+  const moonIndex = Math.floor(diffDays / 30);
   const dayInMoon = diffDays % 30;
   const phase = Math.floor(dayInMoon / 5) + 1;
   const dayName = dayNames[dayInMoon % 5];
-
   const moonName = moons[moonIndex] || "Unknown";
 
   const arkoDate = `${moonName} ${phase} ${dayName}`;
-  document.getElementById("arkonoxDate").innerText = `📅 Arkonox Date: ${arkoDate}`;
+  document.getElementById("arkonoxDate").innerText = `Arkonox Date: ${arkoDate}`;
 }
 
-// 🌍 Live Earth Clock
 function updateClock() {
   const now = new Date();
   const timeStr = now.toLocaleTimeString("en-GB"); // HH:MM:SS
-  document.getElementById("time").innerText = `Earth Time: ${timeStr}`;
+  document.getElementById("earthClock").innerText = `Time: ${timeStr}`;
 }
 
-setInterval(() => {
+document.addEventListener("DOMContentLoaded", () => {
   calculateArkonoxDate();
   updateClock();
-}, 1000);
+  setInterval(() => {
+    calculateArkonoxDate();
+    updateClock();
+  }, 1000);
+});
