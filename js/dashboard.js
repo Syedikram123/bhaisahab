@@ -132,7 +132,7 @@ function calculateArkonoxDate() {
 function updateClock() {
   const now = new Date();
   const timeStr = now.toLocaleTimeString("en-GB"); // HH:MM:SS
-  document.getElementById("earthClock").innerText = `⏰ Earth Time: ${timeStr}`;
+  document.getElementById("time").innerText = `Earth Time: ${timeStr}`;
 }
 
 setInterval(() => {
