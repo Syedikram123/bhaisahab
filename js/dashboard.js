@@ -23,6 +23,13 @@ if (
 
 // ✅ Display Knight Name in Dashboard Header
 document.addEventListener("DOMContentLoaded", () => {
+   calculateArkonoxDate();
+  updateClock();
+  setInterval(() => {
+    calculateArkonoxDate();
+    updateClock();
+  }, 1000);
+
   const knightNameSpan = document.getElementById("knightNameSpan");
   const nameDisplay = document.getElementById("knightNameDisplay");
   const welcomeText = document.getElementById("welcomeText");
